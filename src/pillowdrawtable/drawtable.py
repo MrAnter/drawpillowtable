@@ -169,7 +169,7 @@ class Drawtable:
         return self.__draw.line(xy,fill=self.line_color,width=self.line_width)
     
     
-    def draw_table(self):
+    def draw_table(self, show = True):
             try:
                 cur_h = 0
                 for row_idx,row in enumerate(self.data):
@@ -216,7 +216,10 @@ class Drawtable:
                         else: save = self.save
                         self.__test_back.save(save)
                         print(f"Image saved as {save}")
-                    return self.__test_back.show()
+                    if show == False:
+                        return self.__test_back #.show()
+                    else:
+                        return self.__test_back.show()
                 
                 
             except:
