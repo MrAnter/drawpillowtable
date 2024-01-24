@@ -79,6 +79,7 @@ class Drawtable:
         self.spacing = kwargs.get("text_spacing",0)
         self.stroke_width = kwargs.get('text_stroke_width',0)
         self.stroke_fill = kwargs.get("text_stroke_fill",'black')
+        self.rectangle_size = kwargs.get("rectangle_size",None)
         self.return_params  = return_params
         self.font = font
         self.new_img=False
@@ -166,6 +167,11 @@ class Drawtable:
         
     def __draw_line(self,x1,y1,x2,y2):
         xy = ((x1,y1),(x2,y2))
+
+        if self.rectangle_size is not None:
+            self.__draw.rectangle((x1 - self.rectangle_size, y1 - self.rectangle_size, x1 + self.rectangle_size, y1 + self.rectangle_size), fill="black")
+            self.__draw.rectangle((x2 - self.rectangle_size, y2 - self.rectangle_size, x2 + self.rectangle_size, y2 + self.rectangle_size), fill="black")
+
         return self.__draw.line(xy,fill=self.line_color,width=self.line_width)
     
     
