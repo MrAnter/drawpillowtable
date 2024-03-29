@@ -186,12 +186,12 @@ class Drawtable:
                         cur_h=self.y_rate  
                         for idx,line in enumerate(lines): 
                             if row_idx==0 and self.header_frame:
-                                width, height = self.header_font.getsize(line)
+                                a, b, width, height = self.header_font.getbbox(line)
                                 xy=self.x_init+self.margin+(sum(self.__width_per_cell[:num_columns])),cur_h
                                 self.__draw_text(xy,text=line,font=self.header_font,fill=self.header_color)
                                 cur_h+=height
                             else:
-                                width, height = self.font.getsize(line)
+                                a, b, width, height = self.font.getbbox(line)
                                 xy=self.x_init+self.margin+(sum(self.__width_per_cell[:num_columns])),cur_h
                                 self.__draw_text(xy,text=line,fill=self.text_color)
                                 cur_h+=height
